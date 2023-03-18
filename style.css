@@ -71,6 +71,8 @@ body{
         display: block;
     }
 
+
+
     .form input{
         display: block;
         padding: 20px;
@@ -79,6 +81,11 @@ body{
         border: 1px solid lightgray;
     }
     
+
+    .form h1{
+        font-size: 20px;
+    }
+
     .namashow{
         /* background-color: antiquewhite; */
         width: 100%;
