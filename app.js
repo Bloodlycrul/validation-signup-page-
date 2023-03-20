@@ -1,7 +1,7 @@
-
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const nameShowDiv = document.getElementById("nameshow");
+const password = document.getElementById('password');
 
 let serialNumber = 1;
 const userDetails = [];
@@ -45,12 +45,15 @@ function submitForm() {
   serialNumber++;
   nameInput.value = "";
   emailInput.value = "";
+  password.value = "";
 }
 
 /**
  * Validates the form input and displays an alert if there is an error.
  * Returns true if the input is valid, false otherwise.
  */
+
+const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 function validateForm(name, email) {
   if (!name) {
     alert("Please enter a name.");
@@ -58,7 +61,10 @@ function validateForm(name, email) {
   } else if (!email) {
     alert("Please enter an email address.");
     return false;
-  } else if (userDetails.some(user => user.email === email)) {
+  } else if (!email.match(mailformat)) {
+    alert("please enter the correct email address");
+    return false;
+  } else if (userDetails.some((user) => user.email === email)) {
     alert("That email address is already in use.");
     return false;
   }
