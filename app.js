@@ -1,7 +1,7 @@
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const nameShowDiv = document.getElementById("nameshow");
-const password = document.getElementById('password');
+const password = document.getElementById("password");
 
 let serialNumber = 1;
 const userDetails = [];
@@ -22,7 +22,7 @@ function submitForm() {
   userDiv.appendChild(emailParagraph);
 
   // Check if the form input is valid
-  if (!validateForm(nameInput.value, emailInput.value)) {
+  if (!validateForm(nameInput.value, emailInput.value, password.value)) {
     return;
   }
 
@@ -54,12 +54,16 @@ function submitForm() {
  */
 
 const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-function validateForm(name, email) {
+function validateForm(name, email, password) {
   if (!name) {
     alert("Please enter a name.");
     return false;
   } else if (!email) {
     alert("Please enter an email address.");
+    return false;
+  } else if (!password) {
+    alert("please Enter the password");
+
     return false;
   } else if (!email.match(mailformat)) {
     alert("please enter the correct email address");
